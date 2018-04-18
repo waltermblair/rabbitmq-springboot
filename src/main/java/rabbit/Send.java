@@ -6,8 +6,6 @@ import com.rabbitmq.client.ConnectionFactory;
 
 public class Send {
 
-    // TODO logging
-
     private static final String EXCHANGE_NAME = "logs";
 
     public static void send(String message) throws Exception {

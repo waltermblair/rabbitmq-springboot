@@ -8,9 +8,5 @@
 1. Logging
 
 ## To-Do
-2. Test Implementation
-3. Docker - production
-4. Docker - testing w/ Docker-compose
-5. Retrieving RabbitMQ reply
-6. Refactor tests
-7. Final Documentation
+1. Test Implementation
+1. Final Documentation

@@ -15,7 +15,7 @@ public class LogController {
         try {
             Send.send(input.getContent());
         } catch(Exception e) {
-            return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok(HttpStatus.OK);
     }

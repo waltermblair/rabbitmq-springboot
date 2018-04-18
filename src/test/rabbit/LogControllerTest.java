@@ -17,7 +17,7 @@ import java.nio.charset.Charset;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Unit tests for LogController
+ * Unit tests for LogController with mock server
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -35,7 +35,7 @@ public class LogControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void createLog() throws Exception {
+    public void createLogSuccess() throws Exception {
         JSONObject obj = new JSONObject();
         obj.put("content", "employment achievement unlocked");
         String logJson = obj.toString();
@@ -45,6 +45,19 @@ public class LogControllerTest {
                 .contentType(contentType)
                 .content(logJson))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void createLogFailure() throws Exception {
+        JSONObject obj = new JSONObject();
+        obj.put("bad request", "employment achievement unlocked");
+        String logJson = obj.toString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .post("/logs")
+                .contentType(contentType)
+                .content(logJson))
+                .andExpect(status().isBadRequest());
     }
 
 }

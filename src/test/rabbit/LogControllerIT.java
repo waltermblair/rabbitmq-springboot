@@ -1,6 +1,5 @@
 package rabbit;
 
-import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,18 +12,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
 import java.net.URL;
 import java.nio.charset.Charset;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Integration tests for LogController
+ * Integration tests for LogController with a server
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -48,7 +44,7 @@ public class LogControllerIT {
     }
 
     @Test
-    public void createLog() throws Exception {
+    public void createLogSuccess() throws Exception {
         Log log = new Log();
         log.setContent("Employment Achievement Unlocked");
 
@@ -57,5 +53,16 @@ public class LogControllerIT {
         ResponseEntity<String> response = template.postForEntity(this.base.toString(), request,
                 String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+    }
+
+    @Test
+    public void createLogFail() throws Exception {
+        Log log = new Log();
+
+        HttpEntity<Log> request = new HttpEntity<>(log);
+
+        ResponseEntity<String> response = template.postForEntity(this.base.toString(), request,
+                String.class);
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.BAD_REQUEST));
     }
 }
