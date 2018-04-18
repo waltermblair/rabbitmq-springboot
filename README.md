@@ -6,7 +6,7 @@
 ## Done
 1. Java version
 1. Logging
-
-## To-Do
 1. Test Implementation
-1. Final Documentation
+
+## Notes
+This came together pretty quickly given that I just learned about Spring Boot last week and have never tried testing on it. Existing tests require RabbitMQ to be running, because I'm not yet sure how to mock RabbitMQ. I would probably try to embrase Docker's ease/speed of use and pursue a docker-compose solution first were I to pursue system tests. 
