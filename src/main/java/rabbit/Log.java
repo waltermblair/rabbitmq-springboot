@@ -1,7 +1,5 @@
 package rabbit;
 
-import com.fasterxml.jackson.annotation.JsonValue;
-
 public class Log {
 
     private String content;

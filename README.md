@@ -5,9 +5,9 @@
 
 ## Done
 1. Java version
+1. Logging
 
 ## To-Do
-1. Logging
 2. Test Implementation
   1. e2e testing
   1. mock rabbit
